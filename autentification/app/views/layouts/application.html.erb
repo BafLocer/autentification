@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Autentification</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+  </head>
+  <ul class="navbar-nav mr-auto">
+	<% if user_signed_in? %>
+	<li class="nav-item">
+		<%= link_to "Выход", destroy_user_session_path, method: :delete, class: "nav-link"  %>
+	</li>
+	<% else %>
+	<li class="nav-item">
+		<%= link_to "Вход", new_user_session_path, class: "nav-link"  %>
+	</li>
+	<li class="nav-item">
+		<%= link_to "Регистрация", new_user_registration_path, class: "nav-link"  %>
+	</li>
+	<% end %>
+  </ul>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
